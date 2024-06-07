@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Decor and Furniture</title>
+</head>
+<body>
+
+<div class="col-md-9 grid-margin stretch-card" style="margin-top:150px;">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Default form</h4>
+                    <p class="card-description"> Basic form layout </p>
+                    <form class="forms-sample" method="post" action="{% url 'update_img' pro_id=data.id %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                      <div class="form-group">
+                        <label for="exampleInputUsername1">Category Name</label>
+                        <input type="text" value="{{data.catname}}" class="form-control" id="exampleInputUsername1" placeholder="Category Name" name="cname">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Description </label>
+                        <input type="text" value="{{data.des}}" class="form-control" id="exampleInputEmail1" placeholder="Description" name="desc">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputUsername1">Upload Category Image</label>
+                          <img src="{{data.img.url}}" width="100px;" height="100px;">
+                        <input type="file"  class="form-control"  placeholder="Category Image" name="image">
+                      </div>
+                      <button type="submit" class="btn btn-primary mr-2">Update</button>
+                      <button class="btn btn-dark">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+
+
+</body>
+</html>
+{% endblock %}
